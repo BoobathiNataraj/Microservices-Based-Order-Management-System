@@ -1,0 +1,8 @@
+CREATE DATABASE IF NOT EXISTS user_db;
+USE user_db;
+
+CREATE TABLE users (
+    user_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    email VARCHAR(255)
+);
