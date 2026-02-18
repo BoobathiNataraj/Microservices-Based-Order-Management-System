@@ -178,6 +178,19 @@ microservices-project
 
 
 ---
+## 🗄 Database Design (Database Per Service Pattern)
+
+Each microservice maintains its own independent MySQL database to ensure loose coupling and independent scalability.
+
+Database Structure:
+
+- authuser_db → Authentication Service
+- user_db → User Service
+- product_db → Product Service
+- order_db → Order Service
+- payment_db → Payment Service
+
+All SQL schema files are available inside the `/database` folder.
 
 
 
