@@ -30,6 +30,156 @@ This project follows Microservices Architecture with the following components:
 - **Payment Service** – Payment Handling
 
 ---
+## API Endpoints (Via API Gateway)
+http://localhost:8085
+
+# Authentication APIs (Public)
+   Register (Auth User)
+POST /auth/register
+Body
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+ Login (Generate JWT Token)
+POST /auth/login
+
+Body
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+ Response
+
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9..."
+}
+
+ Save this token — required for all secured APIs.
+ 
+ Authorization Header (IMPORTANT)
+
+For all secured APIs, add this header:
+
+Authorization: Bearer <JWT_TOKEN>
+Content-Type: application/json
+
+User Service APIs (Secured)
+🔹 Create User
+POST /users
+
+
+Body
+
+{
+  "name": "Ravi",
+  "email": "ravi@gmail.com"
+}
+
+🔹 Get All Users
+GET /users
+
+🔹 Get User By ID
+GET /users/{id}
+
+
+Example:
+
+GET /users/1
+
+4️⃣ Product Service APIs (Secured)
+🔹 Create Product
+POST /products
+
+
+Body
+
+{
+  "name": "Laptop",
+  "price": 55000,
+  "stock": 10
+}
+
+🔹 Get All Products
+GET /products
+
+🔹 Get Product By ID
+GET /products/{id}
+
+
+Example:
+
+GET /products/1
+
+🔹 Reduce Product Stock (Internal / Order Service)
+PUT /products/reduce/{id}?quantity=2
+
+
+Example:
+
+PUT /products/reduce/1?quantity=2
+
+
+⚠️ Usually not called directly by client
+Used internally by Order Service
+
+5️⃣ Order Service APIs (Secured)
+🔹 Place Order
+POST /orders
+
+
+Body
+
+{
+  "userId": 1,
+  "productId": 1,
+  "quantity": 2
+}
+
+
+✅ Process
+
+Validates User
+
+Checks Product Stock
+
+Creates Order
+
+Calls Payment Service
+
+Reduces Stock
+
+Updates Order Status
+
+🔹 Get All Orders
+GET /orders
+
+🔹 Get Order By ID
+GET /orders/{id}
+
+
+Example:
+
+GET /orders/1
+
+6️⃣ Payment Service APIs
+🔹 Make Payment (Called by Order Service)
+POST /payments
+
+
+Body
+
+{
+  "orderId": 1,
+  "amount": 110000
+}
+
+
+⚠️ Normally NOT called directly by client
+Triggered automatically when order is placed.
 ##  Base URL (API Gateway)
 http://localhost:8085
 
