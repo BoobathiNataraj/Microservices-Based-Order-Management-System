@@ -178,7 +178,7 @@ microservices-project
 
 
 ---
-## 🗄 Database Design (Database Per Service Pattern)
+##  Database Design (Database Per Service Pattern)
 
 Each microservice maintains its own independent MySQL database to ensure loose coupling and independent scalability.
 
