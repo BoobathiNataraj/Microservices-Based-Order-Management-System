@@ -33,16 +33,16 @@ This project follows Microservices Architecture with the following components:
 ## API Endpoints (Via API Gateway)
 http://localhost:8085
 
-# Authentication APIs (Public)
-   Register (Auth User)
+1.Register (Auth User)
 POST /auth/register
 Body
 {
   "username": "admin",
   "password": "admin123"
-}
-
- Login (Generate JWT Token)
+}  
+Postman Screenshot 
+ ![Alt Text](screenshots/auth_register.png)
+2.Login (Generate JWT Token)
 POST /auth/login
 
 Body
@@ -59,7 +59,10 @@ Body
 }
 
  Save this token — required for all secured APIs.
- 
+
+ Postman Screenshot-
+ ![Alt Text](screenshots/auth_login_token.png)
+ ![Alt Text](screenshots/auth_login.png)
  Authorization Header (IMPORTANT)
 
 For all secured APIs, add this header:
@@ -67,10 +70,9 @@ For all secured APIs, add this header:
 Authorization: Bearer <JWT_TOKEN>
 Content-Type: application/json
 
-User Service APIs (Secured)
-🔹 Create User
+3.User Service APIs (Secured)
+Create User
 POST /users
-
 
 Body
 
@@ -78,106 +80,54 @@ Body
   "name": "Ravi",
   "email": "ravi@gmail.com"
 }
-
-🔹 Get All Users
+Postman Screenshot
+![Alt Text](screenshots/user_add.png)  
+Input Validation & Error Handling   
+![Alt Text](screenshots/user_exception.png) 
+ Get All Users  
 GET /users
 
-🔹 Get User By ID
+ Get User By ID  
 GET /users/{id}
 
 
-Example:
-
-GET /users/1
-
-4️⃣ Product Service APIs (Secured)
-🔹 Create Product
-POST /products
-
-
+4️. Product Service APIs (Secured)  
+Create Product  
+POST /products  
 Body
 
 {
   "name": "Laptop",
   "price": 55000,
   "stock": 10
-}
+}  
+Postman Screenshot
+![Alt Text](screenshots/product_add.png)  
+Input Validation & Error Handling   
+![Alt Text](screenshots/product_exception.png)  
+Get All Products  
+GET /products  
 
-🔹 Get All Products
-GET /products
+Get Product By ID    
+GET /products/{id}  
 
-🔹 Get Product By ID
-GET /products/{id}
-
-
-Example:
-
-GET /products/1
-
-🔹 Reduce Product Stock (Internal / Order Service)
-PUT /products/reduce/{id}?quantity=2
-
-
-Example:
-
-PUT /products/reduce/1?quantity=2
-
-
-⚠️ Usually not called directly by client
-Used internally by Order Service
-
-5️⃣ Order Service APIs (Secured)
-🔹 Place Order
-POST /orders
-
-
+5️. Order Service APIs (Secured)
+Place Order  
+POST /orders  
 Body
 
 {
   "userId": 1,
   "productId": 1,
   "quantity": 2
-}
-
-
-✅ Process
-
-Validates User
-
-Checks Product Stock
-
-Creates Order
-
-Calls Payment Service
-
-Reduces Stock
-
-Updates Order Status
-
-🔹 Get All Orders
-GET /orders
-
-🔹 Get Order By ID
-GET /orders/{id}
-
-
-Example:
-
-GET /orders/1
-
-6️⃣ Payment Service APIs
-🔹 Make Payment (Called by Order Service)
-POST /payments
-
-
-Body
-
-{
-  "orderId": 1,
-  "amount": 110000
-}
-
-
+}  
+Postman Scrennshot
+![Alt Text](screenshots/order_add.png)  
+Input Validation & Error Handling   
+![Alt Text](screenshots/order_exception.png) 
+6️. Payment Service APIs
+Make Payment (Called by Order Service)  
+POST /payments  
 ⚠️ Normally NOT called directly by client
 Triggered automatically when order is placed.
 ##  Base URL (API Gateway)
@@ -202,7 +152,12 @@ POST /products
 Place Order
 
 POST /orders
+ ## Screenshots 
+ ---
 
+ ![Alt Text](docs/images/filename.png)
+ ![Alt Text](docs/images/filename.png)
+ ![Alt Text](docs/images/filename.png)
 ## Authentication Flow (JWT)
 1.User registers or logs in via Auth Service
 2.Auth Service returns a JWT Token
