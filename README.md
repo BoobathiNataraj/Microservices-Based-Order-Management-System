@@ -32,15 +32,25 @@ This project follows Microservices Architecture with the following components:
 ---
 ##  Base URL (API Gateway)
 http://localhost:8085
+
 Register User
+
 POST /auth/register
+
 Login
+
 POST /auth/login
+
 Create User
+
 POST /users
+
 Create Products
+
 POST /products
+
 Place Order
+
 POST /orders
 
 ## Authentication Flow (JWT)
