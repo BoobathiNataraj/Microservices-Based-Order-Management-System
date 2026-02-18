@@ -71,8 +71,9 @@ Body
 
 For all secured APIs, add this header:
 
-Authorization: Bearer <JWT_TOKEN>  
-Content-Type: application/json    
+/*Authorization: Bearer <JWT_TOKEN>  
+Content-Type: application/json*/
+
 ![Alt Text](screenshots/auth_login_token.png)
 
 **3.User Service APIs (Secured)**
