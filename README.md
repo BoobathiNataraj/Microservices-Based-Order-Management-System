@@ -83,7 +83,7 @@ POST /users
 Body
 
 {  
-  "name": "Ravi",
+  "name": "Ravi",  
   "email": "ravi@gmail.com"  
 }    
 
