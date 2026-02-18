@@ -64,15 +64,14 @@ Body
 
  **Postman Screenshot**
 
- 
  ![Alt Text](screenshots/auth_login.png)  
  
  Authorization Header (IMPORTANT)
 
 For all secured APIs, add this header:
 
-/*Authorization: Bearer <JWT_TOKEN>  
-Content-Type: application/json*/
+**Authorization: Bearer <JWT_TOKEN>**  
+**Content-Type: application/json**
 
 ![Alt Text](screenshots/auth_login_token.png)
 
@@ -103,7 +102,8 @@ GET /users
 GET /users/{id}
 
 
-**4️. Product Service APIs (Secured)**    
+**4️. Product Service APIs (Secured)**   
+
 Create Product  
 POST /products  
 Body
@@ -115,6 +115,7 @@ Body
 } 
 
 **Postman Screenshot**
+
 ![Alt Text](screenshots/product_add.png) 
 
 Input Validation & Error Handling   
@@ -128,10 +129,10 @@ Get Product By ID
 GET /products/{id}  
 
 **5️. Order Service APIs (Secured)**
+
 Place Order  
 POST /orders  
-Body
-
+Body  
 {  
   "userId": 1,  
   "productId": 1,  
